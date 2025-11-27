@@ -1,0 +1,13 @@
+pandas
+numpy
+scipy
+matplotlib
+seaborn
+click
+requests
+markdown2
+tabulate
+openpyxl
+
+'''  python -m venv tenv
+tenv\Scripts\activate.bat '''
