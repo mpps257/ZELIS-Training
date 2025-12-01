@@ -1,0 +1,18 @@
+proc_sk,procedure_code,final_description,category
+1,71046,"Radiologic examination, chest; 2 views, frontal and lateral",Imaging
+2,71045,"Radiologic examination, chest; single view, frontal",Imaging
+3,82947,"Glucose; quantitative, blood (except reagent strip)",Labs
+4,81002,"Urinalysis, by dipstick or tablet reagent for bilirubin, glucose, hemoglobin, ketones, leukocytes, nitrite, pH, protein, urobilinogen, specific gravity; non-automated, without microscopy",Labs
+5,85025,Complete (CBC) and automated differential WBC count,Labs
+6,99203,"Office or other outpatient visit for the evaluation and management of a new patient, moderate complexity",Office Visit
+7,45380,"Colonoscopy, flexible, proximal to splenic flexure; with biopsy, single or multiple",Surgery
+8,27447,"Arthroplasty, knee, condyle and plateau; medial and lateral compartments with or without patella resurfacing (total knee arthroplasty)",Surgery
+9,74018,"Radiologic examination, abdomen; 1 view",Imaging
+10,43239,"Esophagogastroduodenoscopy, flexible, transoral; with biopsy, single or multiple",Surgery
+11,99283,"Emergency department visit, moderate severity",Office Visit
+12,80053,Comprehensive metabolic panel,Labs
+13,74019,"Radiologic examination, abdomen; 2 views",Imaging
+14,29881,"Arthroscopy, knee, surgical; meniscectomy, medial OR lateral, including meniscal repair when performed",Surgery
+15,99284,"Emergency department visit, high severity",Office Visit
+16,99214,"Office or other outpatient visit for the evaluation and management of an established patient, moderate complexity",Office Visit
+17,99213,"Office or other outpatient visit for the evaluation and management of an established patient, low complexity",Office Visit
