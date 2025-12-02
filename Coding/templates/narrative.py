@@ -62,3 +62,13 @@ def missingness_narrative(stats: dict) -> list:
     # Return empty list if no missing data - don't clutter insights with "no missing data" messages
     return out
  
+def correlation_narrative(col1, col2, value, kind='pearson'):
+    out = []
+    if kind == 'pearson' or kind == 'spearman':
+        if abs(value) > 0.9:
+            out.append(f"{col1} and {col2} are highly correlated ({kind}={value:.2f}); consider dropping one.")
+    elif kind == 'cramers_v':
+        if value > 0.5:
+            out.append(f"{col1} and {col2} have strong categorical association (Cramér’s V={value:.2f}); feature selection may be needed.")
+    return out or None
+ 

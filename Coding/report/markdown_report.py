@@ -101,8 +101,8 @@ def overview_section(df: pd.DataFrame):
     for col, dtype in col_types.items():
         mixed_flag = "⚠️ Mixed" if any(c[0] == col for c in mixed_type_cols) else ""
         type_table_data.append({
-            'Column': col,
-            'Type': dtype,
+            'Column': col, 
+            'Type': dtype, 
             'Pandas dtype': str(df[col].dtype),
             'Mixed Types': mixed_flag
         })
@@ -126,36 +126,52 @@ def overview_section(df: pd.DataFrame):
             overview_items.append(f"> - **{col}**: {info}")
         overview_items.append(f">\n> **Recommendation:** Normalize data types (convert to consistent format) or split into separate columns.\n")
     
-    overview_items.append(f"\n**Column Data Types:**\n{df_to_md_table(type_df, max_rows=100) or ''}")
+    overview_items.append(f"\n**Column Data Types:**\n" + df_to_md_table(type_df, max_rows=100))
     
     return section_container('Overview', '\n'.join(overview_items), level=2)
- 
 def sample_records_section(df: pd.DataFrame):
-    samples = df.head(8).to_markdown(index=False)
-    return section_container('Sample Records', samples, level=2)
+        samples = df.head(8).to_markdown(index=False)
+        return section_container('Sample Records', samples, level=2)
  
-
+def format_insights(narratives):
+    """Display each column's narrative as bolded name; each list item is a sub-bullet. Extra \n for separation."""
+    result = []
+    for col, narrative_lines in narratives.items():
+        if isinstance(narrative_lines, str):
+            narrative_lines = [narrative_lines]
+        elif not isinstance(narrative_lines, list):
+            continue
+        # Skip columns with no insights (empty lists)
+        if not narrative_lines:
+            continue
+        # Remove leading column names for redundancy
+        formatted = []
+        for f in narrative_lines:
+            lowf = f.lower()
+            if lowf.startswith(col.lower()):
+                f = f[len(col):].lstrip().capitalize()
+            formatted.append(f"  - {f}")
+        result.append(f"- **{col}**\n" + '\n'.join(formatted))
+    return '\n\n'.join(result)
  
 def numeric_section(numeric_df: pd.DataFrame, narratives: dict):
     all_suggestions = {}
     for _, row in numeric_df.iterrows():
         col = row['column']
         sugg = row.get('suggestions', []) or []
-        numeric_df1=numeric_df.drop(columns=['suggestions'])
         if sugg: all_suggestions[col] = sugg
-    tbl = df_to_md_table(numeric_df1)
-    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n\n" 
+    tbl = df_to_md_table(numeric_df)
+    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n**Insights:**\n\n" + format_insights(narratives)
     return section_container('Numeric Column Insights', content, level=2)
  
 def categorical_section(cat_df: pd.DataFrame, narratives: dict):
     all_suggestions = {}
     for _, row in cat_df.iterrows():
         col = row['column']
-        cat_df1=cat_df.drop(columns=['suggestions'])
         sugg = row.get('suggestions', []) or []
         if sugg: all_suggestions[col] = sugg
-    tbl = df_to_md_table(cat_df1)
-    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n" 
+    tbl = df_to_md_table(cat_df)
+    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n**Insights:**\n\n" + format_insights(narratives)
     return section_container('Categorical Column Insights', content, level=2)
  
 def missingness_section(miss_df: pd.DataFrame, narratives: dict):
@@ -163,11 +179,28 @@ def missingness_section(miss_df: pd.DataFrame, narratives: dict):
     for _, row in miss_df.iterrows():
         col = row['column']
         sugg = row.get('suggestions', []) or []
-        if sugg:
-            all_suggestions[col] = sugg
+        if sugg: all_suggestions[col] = sugg
     tbl = df_to_md_table(miss_df)
-    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n"
-    return section_container('Missingness Insights', content, level=2)
+    content = f"{tbl}\n{suggestions_block(all_suggestions)}\n**Insights:**\n\n" + format_insights(narratives)
+    return section_container('Missingness', content, level=2)
+ 
+def correlation_section(corrs: dict, narratives: list):
+    all_suggestions = corrs.get('suggestions', [])
+    blocks = []
+    if not corrs['pearson'].empty:
+        blocks.append('**Pearson Correlation:**\n' + df_to_md_table(corrs['pearson']))
+    if not corrs['categorical'].empty:
+        blocks.append('**Cramér’s V (Categorical):**\n' + df_to_md_table(corrs['categorical']))
+    block = '\n'.join(blocks)
+    insight_lines = []
+    for s in narratives:
+        if ':' in s:
+            label, msg = s.split(':', 1)
+            insight_lines.append(f"- **{label.strip()}**\n  - {msg.strip()}")
+        else:
+            insight_lines.append("  - " + s.strip())
+    content = f"{block}\n{suggestions_block(all_suggestions)}\n**Insights:**\n\n" + '\n\n'.join(insight_lines)
+    return section_container('Correlation/Association', content, level=2)
  
 def class_balance_section(s: pd.Series, bar_img: str, max_cats: int = 25):
     vc = s.value_counts(dropna=False).iloc[:max_cats]
@@ -179,3 +212,4 @@ def class_balance_section(s: pd.Series, bar_img: str, max_cats: int = 25):
         suggestions.append('Severe class imbalance detected (>70% in one class). Use resampling or class weighting.')
     content = f'{tbl}\n\n{img_md}\n\n{suggestions_block(suggestions)}'
     return section_container('Class Balance', content, level=2)
+ 

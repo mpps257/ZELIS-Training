@@ -8,7 +8,7 @@ def html_report(md_text: str, output_path: str, source_name: str = 'Dataset'):
     <style>
       * {box-sizing: border-box;}
       body {
-        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif; 
         margin: 0;
         padding: 0;
         background: #f5f7fa;
@@ -162,3 +162,4 @@ def html_report(md_text: str, output_path: str, source_name: str = 'Dataset'):
     
     with open(output_path, 'w', encoding='utf8') as f:
         f.write(html_full)
+ 

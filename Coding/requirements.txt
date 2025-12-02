@@ -9,5 +9,8 @@ markdown2
 tabulate
 openpyxl
 
-'''  python -m venv tenv
-tenv\Scripts\activate.bat '''
+
+'''  python -m venv venv
+venv\Scripts\activate.bat '''
+
+'''python -m cli "C:\Users\GP018424\Downloads\Medical Cost Personal Datasets\insurance.csv" --output-dir Output/'''

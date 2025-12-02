@@ -1,0 +1,402 @@
+{
+  "insurance": [
+    {
+      "version_id": "20251201_160839",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T16:08:43.097748",
+      "data_hash": "a052f992c6fa",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.98,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 30.0,
+          "max": 30,
+          "missing_pct": 0.0,
+          "reason": "0.0% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.98355754857997,
+          "max": 20,
+          "issues": [
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.98355754857997,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_160839",
+      "missing_pct": 0.0,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    },
+    {
+      "version_id": "20251201_160633",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T16:06:37.290333",
+      "data_hash": "e3ba767c1753",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.44,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 29.96796925048046,
+          "max": 30,
+          "missing_pct": 0.10676916506512919,
+          "reason": "0.1% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.47608370702541,
+          "max": 20,
+          "issues": [
+            "1 columns with high skewness",
+            "High outlier percentages detected",
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.44405295750587,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_160633",
+      "missing_pct": 0.10676916506512919,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    },
+    {
+      "version_id": "20251201_154823",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T15:48:26.588552",
+      "data_hash": "f1eb26d39eeb",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.44,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 29.96796925048046,
+          "max": 30,
+          "missing_pct": 0.10676916506512919,
+          "reason": "0.1% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.47608370702541,
+          "max": 20,
+          "issues": [
+            "1 columns with high skewness",
+            "High outlier percentages detected",
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.44405295750587,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_154823",
+      "missing_pct": 0.10676916506512919,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    },
+    {
+      "version_id": "20251201_143526",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T14:35:29.637739",
+      "data_hash": "d9d2d01dc3b9",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.44,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 29.96796925048046,
+          "max": 30,
+          "missing_pct": 0.10676916506512919,
+          "reason": "0.1% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.47608370702541,
+          "max": 20,
+          "issues": [
+            "1 columns with high skewness",
+            "High outlier percentages detected",
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.44405295750587,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_143526",
+      "missing_pct": 0.10676916506512919,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    },
+    {
+      "version_id": "20251201_143001",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T14:30:05.057012",
+      "data_hash": "fa14f2a7c8ed",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.44,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 29.96796925048046,
+          "max": 30,
+          "missing_pct": 0.10676916506512919,
+          "reason": "0.1% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.47608370702541,
+          "max": 20,
+          "issues": [
+            "1 columns with high skewness",
+            "High outlier percentages detected",
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.44405295750587,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_143001",
+      "missing_pct": 0.10676916506512919,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    },
+    {
+      "version_id": "20251201_130826",
+      "source_name": "insurance",
+      "timestamp": "2025-12-01T13:08:30.362274",
+      "data_hash": "4b52923970ea",
+      "shape": [
+        1338,
+        7
+      ],
+      "columns": [
+        "age",
+        "sex",
+        "bmi",
+        "children",
+        "smoker",
+        "region",
+        "charges"
+      ],
+      "quality_score": 94.98,
+      "quality_breakdown": {
+        "completeness": {
+          "score": 30.0,
+          "max": 30,
+          "missing_pct": 0.0,
+          "reason": "0.0% of data is missing"
+        },
+        "consistency": {
+          "score": 25,
+          "max": 25,
+          "issues": [
+            "No consistency issues detected"
+          ]
+        },
+        "distribution": {
+          "score": 16.98355754857997,
+          "max": 20,
+          "issues": [
+            "Many columns are non-normal"
+          ]
+        },
+        "balance": {
+          "score": 13,
+          "max": 15,
+          "issues": [
+            "1 highly imbalanced columns"
+          ]
+        },
+        "correlation": {
+          "score": 10,
+          "max": 10,
+          "issues": [
+            "No multicollinearity issues"
+          ]
+        },
+        "total": {
+          "score": 94.98355754857997,
+          "max": 100,
+          "grade": "A (Excellent)"
+        }
+      },
+      "storage_path": ".eda_versions\\versions\\insurance_20251201_130826",
+      "missing_pct": 0.0,
+      "numeric_cols": 4,
+      "categorical_cols": 3
+    }
+  ]
+}

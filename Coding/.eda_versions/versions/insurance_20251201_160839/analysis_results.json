@@ -1,0 +1,295 @@
+{
+  "numeric_df": [
+    {
+      "column": "age",
+      "count": 1338,
+      "mean": 39.20702541106129,
+      "median": 39.0,
+      "variance": 197.40138665754375,
+      "std": 14.049960379216154,
+      "min": 18.0,
+      "max": 64.0,
+      "skewness": 0.055610083072599126,
+      "kurtosis": -1.2449206804584227,
+      "outliers": 0,
+      "missing": 0,
+      "missing_pct": 0.0,
+      "shapiro_p": 5.69204692845418e-22,
+      "suggestions": [
+        "Standardize or normalize (variance much larger than mean).",
+        "Shapiro\u2013Wilk test: not normal, consider transformation or non-parametric models."
+      ]
+    },
+    {
+      "column": "bmi",
+      "count": 1338,
+      "mean": 30.66339686098655,
+      "median": 30.4,
+      "variance": 37.18788360977323,
+      "std": 6.098186911679014,
+      "min": 15.96,
+      "max": 53.13,
+      "skewness": 0.28372857291709386,
+      "kurtosis": -0.05502310583700032,
+      "outliers": 32,
+      "missing": 0,
+      "missing_pct": 0.0,
+      "shapiro_p": 2.6046836879834408e-05,
+      "suggestions": [
+        "Shapiro\u2013Wilk test: not normal, consider transformation or non-parametric models."
+      ]
+    },
+    {
+      "column": "children",
+      "count": 1338,
+      "mean": 1.0949177877429,
+      "median": 1.0,
+      "variance": 1.453212745666905,
+      "std": 1.205492739781914,
+      "min": 0.0,
+      "max": 5.0,
+      "skewness": 0.9373281163874423,
+      "kurtosis": 0.1972174268623732,
+      "outliers": 43,
+      "missing": 0,
+      "missing_pct": 0.0,
+      "shapiro_p": 5.066436570900864e-36,
+      "suggestions": [
+        "Shapiro\u2013Wilk test: not normal, consider transformation or non-parametric models."
+      ]
+    },
+    {
+      "column": "charges",
+      "count": 1338,
+      "mean": 13270.422265141257,
+      "median": 9382.033,
+      "variance": 146652372.15285498,
+      "std": 12110.011236694001,
+      "min": 1121.8739,
+      "max": 63770.42801,
+      "skewness": 1.5141797118745743,
+      "kurtosis": 1.595821363956751,
+      "outliers": 136,
+      "missing": 0,
+      "missing_pct": 0.0,
+      "shapiro_p": 1.1505226334932036e-36,
+      "suggestions": [
+        "Apply log or Box-Cox transform to reduce right skew.",
+        "Standardize or normalize (variance much larger than mean).",
+        "Winsorize or remove outliers (>5%).",
+        "Shapiro\u2013Wilk test: not normal, consider transformation or non-parametric models."
+      ]
+    }
+  ],
+  "categorical_df": [
+    {
+      "column": "sex",
+      "count": 1338,
+      "cardinality": 2,
+      "unique_sample": [
+        "male",
+        "female"
+      ],
+      "top_freq": 676,
+      "mode": "male",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "label_inconsistency": false,
+      "max_imbalance": 0.5052316890881914,
+      "has_mixed_types": false,
+      "suggestions": [
+        "One-hot encoding is suitable."
+      ]
+    },
+    {
+      "column": "smoker",
+      "count": 1338,
+      "cardinality": 2,
+      "unique_sample": [
+        "no",
+        "yes"
+      ],
+      "top_freq": 1064,
+      "mode": "no",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "label_inconsistency": false,
+      "max_imbalance": 0.7952167414050823,
+      "has_mixed_types": false,
+      "suggestions": [
+        "One-hot encoding is suitable.",
+        "Highly imbalanced (>70% one class); consider resampling or weighting."
+      ]
+    },
+    {
+      "column": "region",
+      "count": 1338,
+      "cardinality": 4,
+      "unique_sample": [
+        "southeast",
+        "southwest",
+        "northwest",
+        "northeast"
+      ],
+      "top_freq": 364,
+      "mode": "southeast",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "label_inconsistency": false,
+      "max_imbalance": 0.27204783258594917,
+      "has_mixed_types": false,
+      "suggestions": [
+        "One-hot encoding is suitable."
+      ]
+    }
+  ],
+  "missing_df": [
+    {
+      "column": "age",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "sex",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "bmi",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "children",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "smoker",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "region",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    },
+    {
+      "column": "charges",
+      "missing": 0,
+      "missing_pct": 0.0,
+      "suggestions": [
+        "No missing data."
+      ]
+    }
+  ],
+  "missing_overall": {
+    "total_missing": 0,
+    "total_missing_pct": 0.0,
+    "suggestions": []
+  },
+  "corrs": {
+    "pearson": {
+      "age": {
+        "age": 1.0,
+        "bmi": 0.1092718815485351,
+        "children": 0.04246899855884958,
+        "charges": 0.299008193330648
+      },
+      "bmi": {
+        "age": 0.1092718815485351,
+        "bmi": 1.0,
+        "children": 0.012758900820673994,
+        "charges": 0.19834096883362912
+      },
+      "children": {
+        "age": 0.04246899855884958,
+        "bmi": 0.012758900820673994,
+        "children": 1.0,
+        "charges": 0.06799822684790495
+      },
+      "charges": {
+        "age": 0.299008193330648,
+        "bmi": 0.19834096883362912,
+        "children": 0.06799822684790495,
+        "charges": 1.0
+      }
+    },
+    "categorical": {
+      "sex": {
+        "sex": NaN,
+        "smoker": 0.07618481692109515,
+        "region": 0.018033700256745125
+      },
+      "smoker": {
+        "sex": 0.07618481692109515,
+        "smoker": NaN,
+        "region": 0.07408372915032314
+      },
+      "region": {
+        "sex": 0.018033700256745125,
+        "smoker": 0.07408372915032314,
+        "region": NaN
+      }
+    }
+  },
+  "quality_breakdown": {
+    "completeness": {
+      "score": 30.0,
+      "max": 30,
+      "missing_pct": 0.0,
+      "reason": "0.0% of data is missing"
+    },
+    "consistency": {
+      "score": 25,
+      "max": 25,
+      "issues": [
+        "No consistency issues detected"
+      ]
+    },
+    "distribution": {
+      "score": 16.98355754857997,
+      "max": 20,
+      "issues": [
+        "Many columns are non-normal"
+      ]
+    },
+    "balance": {
+      "score": 13,
+      "max": 15,
+      "issues": [
+        "1 highly imbalanced columns"
+      ]
+    },
+    "correlation": {
+      "score": 10,
+      "max": 10,
+      "issues": [
+        "No multicollinearity issues"
+      ]
+    },
+    "total": {
+      "score": 94.98355754857997,
+      "max": 100,
+      "grade": "A (Excellent)"
+    }
+  }
+}

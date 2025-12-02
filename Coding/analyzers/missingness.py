@@ -7,6 +7,7 @@ def analyze_missingness(df: pd.DataFrame):
     # Get numeric column skew/normality
     numeric_eda = analyze_numeric(df)
     skew_map = {row['column']: row['skewness'] for _, row in numeric_eda.iterrows()}
+    shap_map = {row['column']: row.get('shapiro_p', None) for _, row in numeric_eda.iterrows()}
     for col in df.columns:
         s = df[col]
         missing = s.isnull().sum()
@@ -45,3 +46,4 @@ def analyze_missingness(df: pd.DataFrame):
     if overall['total_missing_pct'] > 20:
         overall['suggestions'].append('Dataset has high overall missingness (>20%); review input sources or drop variables.')
     return pd.DataFrame(results), overall
+ 

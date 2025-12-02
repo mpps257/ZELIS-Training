@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Report - insurance</title>
+    
+    <style>
+      * {box-sizing: border-box;}
+      body {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif; 
+        margin: 0;
+        padding: 0;
+        background: #f5f7fa;
+        color: #2a2a2a;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2em;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      h1 {
+        color: #1a1a1a;
+        font-size: 2.5em;
+        margin: 0 0 0.5em 0;
+        padding-bottom: 0.3em;
+        border-bottom: 3px solid #4a90e2;
+        font-weight: 600;
+      }
+      h2 {
+        color: #2a2a2a;
+        font-size: 1.8em;
+        margin: 1.5em 0 0.8em 0;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid #e3e3e3;
+        font-weight: 600;
+      }
+      h3 {
+        color: #3a3a3a;
+        font-size: 1.4em;
+        margin: 1.2em 0 0.6em 0;
+        font-weight: 600;
+      }
+      h4 {
+        color: #4a4a4a;
+        font-size: 1.2em;
+        margin: 1em 0 0.5em 0;
+        font-weight: 600;
+      }
+      .section {
+        background: #fafbfd;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px #e3e9f1;
+        padding: 1.5em 2em;
+        margin-bottom: 2em;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 15px 0;
+        font-size: 0.95em;
+      }
+      th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px 12px;
+        text-align: left;
+      }
+      th {
+        background: #f3f6f7;
+        font-weight: 600;
+        color: #2a2a2a;
+      }
+      tr:nth-child(even) {
+        background: #fafbfd;
+      }
+      hr {
+        border: 0;
+        border-top: 2px solid #e3e3e3;
+        margin: 2em 0;
+      }
+      ul, ol {
+        margin: 0.8em 0 0.8em 20px;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 0.5em;
+      }
+      code {
+        background: #f5f7f8;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      .insight {
+        background: #d8eff8;
+        border-left: 5px solid #1cb0f6;
+        padding: 0.9em 1.3em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.02em;
+      }
+      .suggestions {
+        background: #ffeec2;
+        border-left: 5px solid #f1b100;
+        padding: 1em 1.4em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.06em;
+      }
+      blockquote {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 1em 1.4em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.05em;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 1em 0;
+      }
+      p {
+        margin: 0.8em 0;
+      }
+      strong {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+    </style>
+    
+</head>
+<body>
+    <blockquote>
+  <p>📊 <strong>Version Comparison Available:</strong> Jump to the latest changes via <a href="version_comparison.md">Markdown</a> or <a href="version_comparison.html">HTML</a>.</p>
+</blockquote>
+
+<hr />
+
+</div><h2>Overview</h2><div class="section">
+
+<ul>
+<li>Shape: <strong>1338 rows</strong> × <strong>7 columns</strong></li>
+<li>Memory usage: <strong>73 KB</strong></li>
+<li><strong>Data Type Distribution:</strong>
+<ul>
+<li>Numeric: 4</li>
+<li>Categorical: 3</li>
+<li>Text: 0</li>
+<li>Datetime: 0</li>
+</ul></li>
+</ul>
+
+<p><strong>Column Data Types:</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">Column</th>
+  <th style="text-align:left;">Type</th>
+  <th style="text-align:left;">Pandas dtype</th>
+  <th style="text-align:left;">Mixed Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;">age</td>
+  <td style="text-align:left;">numeric</td>
+  <td style="text-align:left;">int64</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">sex</td>
+  <td style="text-align:left;">categorical</td>
+  <td style="text-align:left;">object</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">bmi</td>
+  <td style="text-align:left;">numeric</td>
+  <td style="text-align:left;">float64</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">children</td>
+  <td style="text-align:left;">numeric</td>
+  <td style="text-align:left;">int64</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">smoker</td>
+  <td style="text-align:left;">categorical</td>
+  <td style="text-align:left;">object</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">region</td>
+  <td style="text-align:left;">categorical</td>
+  <td style="text-align:left;">object</td>
+  <td style="text-align:left;"></td>
+</tr>
+<tr>
+  <td style="text-align:left;">charges</td>
+  <td style="text-align:left;">numeric</td>
+  <td style="text-align:left;">float64</td>
+  <td style="text-align:left;"></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+</div><h2>Sample Records</h2><div class="section">
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:right;">age</th>
+  <th style="text-align:left;">sex</th>
+  <th style="text-align:right;">bmi</th>
+  <th style="text-align:right;">children</th>
+  <th style="text-align:left;">smoker</th>
+  <th style="text-align:left;">region</th>
+  <th style="text-align:right;">charges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:right;">19</td>
+  <td style="text-align:left;">female</td>
+  <td style="text-align:right;">27.9</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">yes</td>
+  <td style="text-align:left;">southwest</td>
+  <td style="text-align:right;">16884.9</td>
+</tr>
+<tr>
+  <td style="text-align:right;">18</td>
+  <td style="text-align:left;">male</td>
+  <td style="text-align:right;">33.77</td>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">southeast</td>
+  <td style="text-align:right;">1725.55</td>
+</tr>
+<tr>
+  <td style="text-align:right;">28</td>
+  <td style="text-align:left;">male</td>
+  <td style="text-align:right;">33</td>
+  <td style="text-align:right;">3</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">southeast</td>
+  <td style="text-align:right;">4449.46</td>
+</tr>
+<tr>
+  <td style="text-align:right;">33</td>
+  <td style="text-align:left;">male</td>
+  <td style="text-align:right;">22.705</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">northwest</td>
+  <td style="text-align:right;">21984.5</td>
+</tr>
+<tr>
+  <td style="text-align:right;">32</td>
+  <td style="text-align:left;">male</td>
+  <td style="text-align:right;">28.88</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">northwest</td>
+  <td style="text-align:right;">3866.86</td>
+</tr>
+<tr>
+  <td style="text-align:right;">31</td>
+  <td style="text-align:left;">female</td>
+  <td style="text-align:right;">25.74</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">southeast</td>
+  <td style="text-align:right;">3756.62</td>
+</tr>
+<tr>
+  <td style="text-align:right;">46</td>
+  <td style="text-align:left;">female</td>
+  <td style="text-align:right;">33.44</td>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">southeast</td>
+  <td style="text-align:right;">8240.59</td>
+</tr>
+<tr>
+  <td style="text-align:right;">37</td>
+  <td style="text-align:left;">female</td>
+  <td style="text-align:right;">27.74</td>
+  <td style="text-align:right;">3</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:left;">northwest</td>
+  <td style="text-align:right;">7281.51</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+</div><h2>Numeric Column Insights</h2><div class="section">
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">column</th>
+  <th style="text-align:right;">count</th>
+  <th style="text-align:right;">mean</th>
+  <th style="text-align:right;">median</th>
+  <th style="text-align:right;">variance</th>
+  <th style="text-align:right;">std</th>
+  <th style="text-align:right;">min</th>
+  <th style="text-align:right;">max</th>
+  <th style="text-align:right;">skewness</th>
+  <th style="text-align:right;">kurtosis</th>
+  <th style="text-align:right;">outliers</th>
+  <th style="text-align:right;">missing</th>
+  <th style="text-align:right;">missing_pct</th>
+  <th style="text-align:right;">shapiro_p</th>
+  <th style="text-align:left;">suggestions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;">age</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">39.2</td>
+  <td style="text-align:right;">39</td>
+  <td style="text-align:right;">197</td>
+  <td style="text-align:right;">14</td>
+  <td style="text-align:right;">18</td>
+  <td style="text-align:right;">64</td>
+  <td style="text-align:right;">0.0556</td>
+  <td style="text-align:right;">-1.24</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">5.69e-22</td>
+  <td style="text-align:left;">['Standardize or normalize (variance much larger than mean).', 'Shapiro–Wilk test: not normal, consider transformation or non-parametric models.']</td>
+</tr>
+<tr>
+  <td style="text-align:left;">bmi</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">30.7</td>
+  <td style="text-align:right;">30.4</td>
+  <td style="text-align:right;">37.2</td>
+  <td style="text-align:right;">6.1</td>
+  <td style="text-align:right;">16</td>
+  <td style="text-align:right;">53.1</td>
+  <td style="text-align:right;">0.284</td>
+  <td style="text-align:right;">-0.055</td>
+  <td style="text-align:right;">32</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">2.6e-05</td>
+  <td style="text-align:left;">['Shapiro–Wilk test: not normal, consider transformation or non-parametric models.']</td>
+</tr>
+<tr>
+  <td style="text-align:left;">children</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">1.09</td>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:right;">1.45</td>
+  <td style="text-align:right;">1.21</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">5</td>
+  <td style="text-align:right;">0.937</td>
+  <td style="text-align:right;">0.197</td>
+  <td style="text-align:right;">43</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">5.07e-36</td>
+  <td style="text-align:left;">['Shapiro–Wilk test: not normal, consider transformation or non-parametric models.']</td>
+</tr>
+<tr>
+  <td style="text-align:left;">charges</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">1.33e+04</td>
+  <td style="text-align:right;">9.38e+03</td>
+  <td style="text-align:right;">1.47e+08</td>
+  <td style="text-align:right;">1.21e+04</td>
+  <td style="text-align:right;">1.12e+03</td>
+  <td style="text-align:right;">6.38e+04</td>
+  <td style="text-align:right;">1.51</td>
+  <td style="text-align:right;">1.6</td>
+  <td style="text-align:right;">136</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">1.15e-36</td>
+  <td style="text-align:left;">['Apply log or Box-Cox transform to reduce right skew.', 'Standardize or normalize (variance much larger than mean).', 'Winsorize or remove outliers (&gt;5%).', 'Shapiro–Wilk test: not normal, consider transformation or non-parametric models.']</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote class="suggestions"><p><strong>Suggested Transforms / Actions:</strong></p>
+  
+  <ul>
+  <li><strong>age</strong>
+  <ul>
+  <li>Standardize or normalize (variance much larger than mean).</li>
+  <li>Shapiro–Wilk test: not normal, consider transformation or non-parametric models.</li>
+  </ul></li>
+  <li><strong>bmi</strong>
+  <ul>
+  <li>Shapiro–Wilk test: not normal, consider transformation or non-parametric models.</li>
+  </ul></li>
+  <li><strong>children</strong>
+  <ul>
+  <li>Shapiro–Wilk test: not normal, consider transformation or non-parametric models.</li>
+  </ul></li>
+  <li><strong>charges</strong>
+  <ul>
+  <li>Apply log or Box-Cox transform to reduce right skew.</li>
+  <li>Standardize or normalize (variance much larger than mean).</li>
+  <li>Winsorize or remove outliers (&gt;5%).</li>
+  <li>Shapiro–Wilk test: not normal, consider transformation or non-parametric models.</li>
+  </ul></li>
+  </ul>
+</blockquote>
+
+<p><strong>Insights:</strong></p>
+
+<ul>
+<li><p><strong>age</strong></p>
+
+<ul>
+<li>Shows high dispersion; standardization recommended.</li>
+<li>Data is not normally distributed (shapiro p&lt;6e-22); consider transformation.</li>
+</ul></li>
+<li><p><strong>bmi</strong></p>
+
+<ul>
+<li>Data is not normally distributed (shapiro p&lt;3e-05); consider transformation.</li>
+</ul></li>
+<li><p><strong>children</strong></p>
+
+<ul>
+<li>Data is not normally distributed (shapiro p&lt;5e-36); consider transformation.</li>
+</ul></li>
+<li><p><strong>charges</strong></p>
+
+<ul>
+<li>Is strongly right-skewed; consider log transform.</li>
+<li>Shows high dispersion; standardization recommended.</li>
+<li>Contains many extreme values; winsorization or removal suggested.</li>
+<li>Data is not normally distributed (shapiro p&lt;1e-36); consider transformation.</li>
+</ul></li>
+</ul>
+
+<hr />
+
+</div><h2>Categorical Column Insights</h2><div class="section">
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">column</th>
+  <th style="text-align:right;">count</th>
+  <th style="text-align:right;">cardinality</th>
+  <th style="text-align:left;">unique_sample</th>
+  <th style="text-align:right;">top_freq</th>
+  <th style="text-align:left;">mode</th>
+  <th style="text-align:right;">missing</th>
+  <th style="text-align:right;">missing_pct</th>
+  <th style="text-align:left;">label_inconsistency</th>
+  <th style="text-align:right;">max_imbalance</th>
+  <th style="text-align:left;">has<em>mixed</em>types</th>
+  <th style="text-align:left;">suggestions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;">sex</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">2</td>
+  <td style="text-align:left;">['male', 'female']</td>
+  <td style="text-align:right;">676</td>
+  <td style="text-align:left;">male</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:right;">0.505</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:left;">['One-hot encoding is suitable.']</td>
+</tr>
+<tr>
+  <td style="text-align:left;">smoker</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">2</td>
+  <td style="text-align:left;">['no', 'yes']</td>
+  <td style="text-align:right;">1064</td>
+  <td style="text-align:left;">no</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:right;">0.795</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:left;">['One-hot encoding is suitable.', 'Highly imbalanced (&gt;70% one class); consider resampling or weighting.']</td>
+</tr>
+<tr>
+  <td style="text-align:left;">region</td>
+  <td style="text-align:right;">1338</td>
+  <td style="text-align:right;">4</td>
+  <td style="text-align:left;">['southeast', 'southwest', 'northwest', 'northeast']</td>
+  <td style="text-align:right;">364</td>
+  <td style="text-align:left;">southeast</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:right;">0</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:right;">0.272</td>
+  <td style="text-align:left;">False</td>
+  <td style="text-align:left;">['One-hot encoding is suitable.']</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote class="suggestions"><p><strong>Suggested Transforms / Actions:</strong></p>
+  
+  <ul>
+  <li><strong>sex</strong>
+  <ul>
+  <li>One-hot encoding is suitable.</li>
+  </ul></li>
+  <li><strong>smoker</strong>
+  <ul>
+  <li>One-hot encoding is suitable.</li>
+  <li>Highly imbalanced (&gt;70% one class); consider resampling or weighting.</li>
+  </ul></li>
+  <li><strong>region</strong>
+  <ul>
+  <li>One-hot encoding is suitable.</li>
+  </ul></li>
+  </ul>
+</blockquote>
+
+<p><strong>Insights:</strong></p>
+
+<ul>
+<li><p><strong>sex</strong></p>
+
+<ul>
+<li>Has manageable cardinality (2); one-hot encoding is suitable.</li>
+</ul></li>
+<li><p><strong>smoker</strong></p>
+
+<ul>
+<li>Has manageable cardinality (2); one-hot encoding is suitable.</li>
+<li>Is highly imbalanced (&gt;70% in one class); consider resampling or reweighting.</li>
+</ul></li>
+<li><p><strong>region</strong></p>
+
+<ul>
+<li>Has manageable cardinality (4); one-hot encoding is suitable.</li>
+</ul></li>
+</ul>
+
+<hr />
+
+</div><h2>Missingness</h2><div class="section">
+
+<p>No data.</p>
+
+<p><strong>Insights:</strong></p>
+
+<hr />
+
+</div><h2>Correlation/Association</h2><div class="section">
+
+<p><strong>Pearson Correlation:</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:right;">age</th>
+  <th style="text-align:right;">bmi</th>
+  <th style="text-align:right;">children</th>
+  <th style="text-align:right;">charges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:right;">0.109</td>
+  <td style="text-align:right;">0.0425</td>
+  <td style="text-align:right;">0.299</td>
+</tr>
+<tr>
+  <td style="text-align:right;">0.109</td>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:right;">0.0128</td>
+  <td style="text-align:right;">0.198</td>
+</tr>
+<tr>
+  <td style="text-align:right;">0.0425</td>
+  <td style="text-align:right;">0.0128</td>
+  <td style="text-align:right;">1</td>
+  <td style="text-align:right;">0.068</td>
+</tr>
+<tr>
+  <td style="text-align:right;">0.299</td>
+  <td style="text-align:right;">0.198</td>
+  <td style="text-align:right;">0.068</td>
+  <td style="text-align:right;">1</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Cramér’s V (Categorical):</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:right;">sex</th>
+  <th style="text-align:right;">smoker</th>
+  <th style="text-align:right;">region</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:right;">nan</td>
+  <td style="text-align:right;">0.0762</td>
+  <td style="text-align:right;">0.018</td>
+</tr>
+<tr>
+  <td style="text-align:right;">0.0762</td>
+  <td style="text-align:right;">nan</td>
+  <td style="text-align:right;">0.0741</td>
+</tr>
+<tr>
+  <td style="text-align:right;">0.018</td>
+  <td style="text-align:right;">0.0741</td>
+  <td style="text-align:right;">nan</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Insights:</strong></p>
+
+<hr />
+
+</div><h2>Visual Summary</h2><div class="section">
+
+<h3>Numeric Distributions</h3>
+
+<ul>
+<li><p><strong>age</strong></p>
+
+<p><img src="figs/age_hist.png" alt="age histogram" width="340" /> <img src="figs/age_box.png" alt="age boxplot" width="340" /></p></li>
+<li><p><strong>bmi</strong></p>
+
+<p><img src="figs/bmi_hist.png" alt="bmi histogram" width="340" /> <img src="figs/bmi_box.png" alt="bmi boxplot" width="340" /></p></li>
+<li><p><strong>children</strong></p>
+
+<p><img src="figs/children_hist.png" alt="children histogram" width="340" /> <img src="figs/children_box.png" alt="children boxplot" width="340" /></p></li>
+<li><p><strong>charges</strong></p>
+
+<p><img src="figs/charges_hist.png" alt="charges histogram" width="340" /> <img src="figs/charges_box.png" alt="charges boxplot" width="340" /></p></li>
+</ul>
+
+<h3>Categorical Distributions</h3>
+
+<ul>
+<li><p><strong>sex</strong></p>
+
+<p><img src="figs/sex_bar.png" alt="sex bar chart" width="340" /></p></li>
+<li><p><strong>smoker</strong></p>
+
+<p><img src="figs/smoker_bar.png" alt="smoker bar chart" width="340" /></p></li>
+<li><p><strong>region</strong></p>
+
+<p><img src="figs/region_bar.png" alt="region bar chart" width="340" /></p></li>
+</ul>
+
+<h3>Missingness Map</h3>
+
+<p><img src="figs/missingness_heatmap.png" alt="missingness heatmap" width="520" /></p>
+
+<h3>Correlation Heatmap</h3>
+
+<p><img src="figs/correlation_heatmap.png" alt="correlation heatmap" width="520" /></p>
+</div>
+</body>
+</html>

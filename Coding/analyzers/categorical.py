@@ -61,3 +61,4 @@ def analyze_categorical(df: pd.DataFrame, max_unique: int = 20):
             'suggestions': suggestions,
         })
     return pd.DataFrame(results)
+ 

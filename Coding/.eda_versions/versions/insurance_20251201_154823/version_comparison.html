@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Report - insurance - Version Comparison</title>
+    
+    <style>
+      * {box-sizing: border-box;}
+      body {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif; 
+        margin: 0;
+        padding: 0;
+        background: #f5f7fa;
+        color: #2a2a2a;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2em;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      h1 {
+        color: #1a1a1a;
+        font-size: 2.5em;
+        margin: 0 0 0.5em 0;
+        padding-bottom: 0.3em;
+        border-bottom: 3px solid #4a90e2;
+        font-weight: 600;
+      }
+      h2 {
+        color: #2a2a2a;
+        font-size: 1.8em;
+        margin: 1.5em 0 0.8em 0;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid #e3e3e3;
+        font-weight: 600;
+      }
+      h3 {
+        color: #3a3a3a;
+        font-size: 1.4em;
+        margin: 1.2em 0 0.6em 0;
+        font-weight: 600;
+      }
+      h4 {
+        color: #4a4a4a;
+        font-size: 1.2em;
+        margin: 1em 0 0.5em 0;
+        font-weight: 600;
+      }
+      .section {
+        background: #fafbfd;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px #e3e9f1;
+        padding: 1.5em 2em;
+        margin-bottom: 2em;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 15px 0;
+        font-size: 0.95em;
+      }
+      th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px 12px;
+        text-align: left;
+      }
+      th {
+        background: #f3f6f7;
+        font-weight: 600;
+        color: #2a2a2a;
+      }
+      tr:nth-child(even) {
+        background: #fafbfd;
+      }
+      hr {
+        border: 0;
+        border-top: 2px solid #e3e3e3;
+        margin: 2em 0;
+      }
+      ul, ol {
+        margin: 0.8em 0 0.8em 20px;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 0.5em;
+      }
+      code {
+        background: #f5f7f8;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      .insight {
+        background: #d8eff8;
+        border-left: 5px solid #1cb0f6;
+        padding: 0.9em 1.3em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.02em;
+      }
+      .suggestions {
+        background: #ffeec2;
+        border-left: 5px solid #f1b100;
+        padding: 1em 1.4em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.06em;
+      }
+      blockquote {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 1em 1.4em;
+        margin: 1.2em 0;
+        border-radius: 5px;
+        font-size: 1.05em;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 1em 0;
+      }
+      p {
+        margin: 0.8em 0;
+      }
+      strong {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+    </style>
+    
+</head>
+<body>
+    <h1>Version Comparison Report</h1>
+
+<p><strong>Dataset:</strong> insurance</p>
+
+<blockquote>
+  <p>📘 Back to <a href="eda_report.md">EDA Report</a> · <a href="eda_report.html">HTML</a></p>
+</blockquote>
+
+<hr />
+
+</div><h2>🏆 Best Version</h2><div class="section">
+
+<p><strong>Best Quality Version:</strong> 20251201_130826</p>
+
+<ul>
+<li><strong>Quality Score:</strong> 94.98/100</li>
+<li><strong>Timestamp:</strong> 2025-12-01 13:08:30</li>
+<li><strong>Shape:</strong> 1338 rows × 7 columns</li>
+<li><p><strong>Missing Data:</strong> 0.00%</p></li>
+<li><p><strong>Grade:</strong> A (Excellent)</p></li>
+</ul>
+
+<hr />
+
+</div><h2>Version History</h2><div class="section">
+
+<p><strong>Data Source:</strong> insurance</p>
+
+<table>
+<thead>
+<tr>
+  <th>Version ID</th>
+  <th>Timestamp</th>
+  <th>Quality Score</th>
+  <th>Shape</th>
+  <th>Missing %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>20251201_154823</td>
+  <td>2025-12-01 15:48:26</td>
+  <td>94.44/100</td>
+  <td>1338×7</td>
+  <td>0.11%</td>
+</tr>
+<tr>
+  <td>20251201_143526</td>
+  <td>2025-12-01 14:35:29</td>
+  <td>94.44/100</td>
+  <td>1338×7</td>
+  <td>0.11%</td>
+</tr>
+<tr>
+  <td>20251201_143001</td>
+  <td>2025-12-01 14:30:05</td>
+  <td>94.44/100</td>
+  <td>1338×7</td>
+  <td>0.11%</td>
+</tr>
+<tr>
+  <td>20251201_130826</td>
+  <td>2025-12-01 13:08:30</td>
+  <td>94.98/100</td>
+  <td>1338×7</td>
+  <td>0.00%</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+</div><h2>Version Comparison</h2><div class="section">
+
+<p><strong>Version 1:</strong> 20251201<em>143526 (2025-12-01 14:35:29)
+<strong>Version 2:</strong> 20251201</em>154823 (2025-12-01 15:48:26)</p>
+
+<h3>Quality Score Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Version 1</th>
+  <th>Version 2</th>
+  <th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Quality Score</strong></td>
+  <td>94.44/100</td>
+  <td>94.44/100</td>
+  <td>+0.00</td>
+</tr>
+</tbody>
+</table>
+
+<p>⚖️ <strong>Both versions have similar quality</strong> (score: 94.44)</p>
+
+<h3>Dataset Shape</h3>
+
+<ul>
+<li><strong>No change:</strong> 1338 rows × 7 columns</li>
+</ul>
+
+<h3>Column Changes</h3>
+
+<ul>
+<li><strong>No column changes</strong> (same columns in both versions)</li>
+</ul>
+
+<h3>Missing Data Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Version</th>
+  <th>Missing %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Version 1</td>
+  <td>0.11%</td>
+</tr>
+<tr>
+  <td>Version 2</td>
+  <td>0.11%</td>
+</tr>
+<tr>
+  <td><strong>Change</strong></td>
+  <td><strong>+0.00%</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p>➡️ <strong>No change</strong> in missing data percentage</p>
+
+<h3>Quality Breakdown Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Component</th>
+  <th>Version 1</th>
+  <th>Version 2</th>
+  <th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Completeness</td>
+  <td>29.97</td>
+  <td>29.97</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>Consistency</td>
+  <td>25.00</td>
+  <td>25.00</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>Distribution</td>
+  <td>16.48</td>
+  <td>16.48</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>Balance</td>
+  <td>13.00</td>
+  <td>13.00</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>Correlation</td>
+  <td>10.00</td>
+  <td>10.00</td>
+  <td>+0.00</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Recommendations</h3>
+
+<ul>
+<li>Both versions have similar quality</li>
+<li>Choose based on other factors (timeliness, completeness, etc.)</li>
+</ul>
+
+<hr />
+
+</div><h2>📊 Detailed Version Comparison</h2><div class="section">
+
+<p><strong>Previous Version:</strong> 20251201<em>143526
+<strong>Current Version:</strong> 20251201</em>154823</p>
+
+<h3>📈 Statistical Comparison (Numeric Columns)</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Column</th>
+  <th>Metric</th>
+  <th>Previous</th>
+  <th>Current</th>
+  <th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>age</td>
+  <td>Mean</td>
+  <td>39.21</td>
+  <td>39.21</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Median</td>
+  <td>39.00</td>
+  <td>39.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Std</td>
+  <td>14.05</td>
+  <td>14.05</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Min</td>
+  <td>18.00</td>
+  <td>18.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Max</td>
+  <td>64.00</td>
+  <td>64.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Mean</td>
+  <td>30.61</td>
+  <td>30.61</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Median</td>
+  <td>30.40</td>
+  <td>30.40</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Std</td>
+  <td>6.46</td>
+  <td>6.46</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Min</td>
+  <td>-45.00</td>
+  <td>-45.00</td>
+  <td>+0.00 (-0.0%)</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Max</td>
+  <td>53.13</td>
+  <td>53.13</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Mean</td>
+  <td>13203.00</td>
+  <td>13203.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Median</td>
+  <td>9303.30</td>
+  <td>9303.30</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Std</td>
+  <td>12076.03</td>
+  <td>12076.03</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Min</td>
+  <td>0.00</td>
+  <td>0.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Max</td>
+  <td>63770.43</td>
+  <td>63770.43</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Mean</td>
+  <td>1.12</td>
+  <td>1.12</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Median</td>
+  <td>1.00</td>
+  <td>1.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Std</td>
+  <td>1.38</td>
+  <td>1.38</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Min</td>
+  <td>0.00</td>
+  <td>0.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Max</td>
+  <td>25.00</td>
+  <td>25.00</td>
+  <td>+0.00 (+0.0%)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>📉 Distribution Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Column</th>
+  <th>Metric</th>
+  <th>Previous</th>
+  <th>Current</th>
+  <th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>age</td>
+  <td>Skewness</td>
+  <td>0.06</td>
+  <td>0.06</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Kurtosis</td>
+  <td>-1.24</td>
+  <td>-1.24</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>age</td>
+  <td>Outlier %</td>
+  <td>0.00%</td>
+  <td>0.00%</td>
+  <td>+0.00%</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Skewness</td>
+  <td>-0.95</td>
+  <td>-0.95</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Kurtosis</td>
+  <td>13.49</td>
+  <td>13.49</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>Outlier %</td>
+  <td>2.02%</td>
+  <td>2.02%</td>
+  <td>+0.00%</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Skewness</td>
+  <td>1.52</td>
+  <td>1.52</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Kurtosis</td>
+  <td>1.63</td>
+  <td>1.63</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>Outlier %</td>
+  <td>10.24%</td>
+  <td>10.24%</td>
+  <td>+0.00%</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Skewness</td>
+  <td>4.52</td>
+  <td>4.52</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Kurtosis</td>
+  <td>66.21</td>
+  <td>66.21</td>
+  <td>+0.00</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>Outlier %</td>
+  <td>1.50%</td>
+  <td>1.50%</td>
+  <td>+0.00%</td>
+</tr>
+</tbody>
+</table>
+
+<h3>🔗 Correlation Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Column Pair</th>
+  <th>Previous Correlation</th>
+  <th>Current Correlation</th>
+  <th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>age ↔ bmi</td>
+  <td>0.100</td>
+  <td>0.100</td>
+  <td>+0.000</td>
+</tr>
+<tr>
+  <td>age ↔ charges</td>
+  <td>0.298</td>
+  <td>0.298</td>
+  <td>+0.000</td>
+</tr>
+<tr>
+  <td>age ↔ children</td>
+  <td>0.055</td>
+  <td>0.055</td>
+  <td>+0.000</td>
+</tr>
+<tr>
+  <td>bmi ↔ charges</td>
+  <td>0.193</td>
+  <td>0.193</td>
+  <td>+0.000</td>
+</tr>
+<tr>
+  <td>bmi ↔ children</td>
+  <td>0.010</td>
+  <td>0.010</td>
+  <td>+0.000</td>
+</tr>
+<tr>
+  <td>charges ↔ children</td>
+  <td>0.091</td>
+  <td>0.091</td>
+  <td>+0.000</td>
+</tr>
+</tbody>
+</table>
+
+<h3>🎯 Feature Usefulness Comparison</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Column</th>
+  <th>Previous Score</th>
+  <th>Current Score</th>
+  <th>Change</th>
+  <th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>age</td>
+  <td>56.6</td>
+  <td>56.6</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>bmi</td>
+  <td>54.1</td>
+  <td>54.1</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>charges</td>
+  <td>63.0</td>
+  <td>63.0</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>children</td>
+  <td>63.3</td>
+  <td>63.3</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>region</td>
+  <td>49.9</td>
+  <td>49.9</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>sex</td>
+  <td>50.0</td>
+  <td>50.0</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+<tr>
+  <td>smoker</td>
+  <td>50.0</td>
+  <td>50.0</td>
+  <td>+0.0</td>
+  <td>➡️ Stable</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+</div><h2>📈 Comparison Visuals</h2><div class="section">
+
+<h3>Quality Score Trend</h3>
+
+<p><img src="comparison_figs/quality_trend.png" alt="Quality Score Trend" /></p>
+
+<p>Quality score movement across the most recent versions.</p>
+
+<h3>Correlation Change Heatmap</h3>
+
+<p><img src="comparison_figs/correlation_change.png" alt="Correlation Change Heatmap" /></p>
+
+<p>Correlation differences (current minus previous) for the most impacted numeric columns.</p>
+</div>
+</body>
+</html>
