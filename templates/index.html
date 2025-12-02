@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthetic Data Creator | HIPAA Compliant</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+        .header{background:#2c3e50;color:white;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+        .logo{font-size:1.5rem;font-weight:600}
+        .hipaa-badge{background:#27ae60;padding:0.4rem 0.8rem;border-radius:4px;font-size:0.85rem}
+        .container{max-width:1200px;margin:2rem auto;padding:0 2rem}
+        .hero{text-align:center;margin-bottom:3rem}
+        .hero h1{font-size:2.5rem;margin-bottom:1rem;color:#2c3e50}
+        .hero p{font-size:1.1rem;color:#666;max-width:700px;margin:0 auto}
+        .tabs{display:flex;gap:1rem;margin-bottom:2rem;border-bottom:2px solid #ddd;flex-wrap:wrap}
+        .tab{padding:1rem 2rem;background:none;border:none;cursor:pointer;font-size:1rem;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.3s}
+        .tab:hover{color:#2c3e50}
+        .tab.active{color:#3498db;border-bottom-color:#3498db;font-weight:600}
+        .panel{display:none;background:white;padding:2rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+        .panel.active{display:block}
+        .form-group{margin-bottom:1.5rem}
+        .form-group label{display:block;margin-bottom:0.5rem;font-weight:500;color:#555}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:0.75rem;border:1px solid #ddd;border-radius:4px;font-size:1rem;font-family:inherit}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:#3498db;box-shadow:0 0 0 3px rgba(52,152,219,0.1)}
+        .form-group textarea{min-height:120px;resize:vertical}
+        .btn{padding:0.75rem 1.5rem;border:none;border-radius:4px;font-size:1rem;cursor:pointer;transition:all 0.3s;font-weight:500}
+        .btn-primary{background:#3498db;color:white}
+        .btn-primary:hover{background:#2980b9}
+        .btn-secondary{background:#95a5a6;color:white}
+        .btn-secondary:hover{background:#7f8c8d}
+        .btn:disabled{opacity:0.6;cursor:not-allowed}
+        .btn-group{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+        .info-box{background:#e8f4f8;border-left:4px solid #3498db;padding:1rem;margin-bottom:1.5rem;border-radius:4px}
+        .info-box strong{color:#2980b9}
+        .attribute-item{background:#f9f9f9;border:1px solid #ddd;border-radius:4px;padding:1rem;margin-bottom:1rem}
+        .attribute-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem}
+        .attribute-name{font-weight:600;color:#2c3e50}
+        .detected-type{font-size:0.85rem;color:#7f8c8d;margin-left:0.5rem}
+        .remove-btn{background:#e74c3c;color:white;border:none;padding:0.4rem 0.8rem;border-radius:4px;cursor:pointer;font-size:0.85rem}
+        .remove-btn:hover{background:#c0392b}
+        .attr-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+        .add-attr-btn{width:100%;padding:1rem;background:#ecf0f1;border:2px dashed #bdc3c7;border-radius:4px;cursor:pointer;font-size:1rem;color:#7f8c8d;margin-top:1rem}
+        .add-attr-btn:hover{background:#d5dbdb;border-color:#95a5a6}
+        .file-upload{border:2px dashed #bdc3c7;border-radius:4px;padding:3rem;text-align:center;cursor:pointer;background:#f9f9f9}
+        .file-upload:hover{border-color:#3498db;background:#f0f8ff}
+        .file-name{margin-top:1rem;padding:0.75rem;background:#e8f4f8;border-radius:4px;color:#2980b9}
+        .distribution-options{display:flex;gap:1rem;margin-top:0.5rem}
+        .dist-option{flex:1;padding:1rem;border:2px solid #ddd;border-radius:4px;cursor:pointer;text-align:center}
+        .dist-option:hover{border-color:#3498db}
+        .dist-option.selected{border-color:#3498db;background:#e8f4f8}
+        .dist-option input{display:none}
+        .results{margin-top:2rem;display:none}
+        .results.visible{display:block}
+        .results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+        .stats{display:flex;gap:1.5rem}
+        .stat{padding:0.75rem 1.25rem;background:#ecf0f1;border-radius:4px}
+        .stat-value{font-size:1.5rem;font-weight:600;color:#3498db}
+        .stat-label{font-size:0.85rem;color:#7f8c8d}
+        .table-container{overflow-x:auto;border:1px solid #ddd;border-radius:4px}
+        table{width:100%;border-collapse:collapse}
+        th{background:#f8f9fa;padding:0.75rem;text-align:left;border-bottom:2px solid #ddd;font-weight:600;color:#555}
+        td{padding:0.75rem;border-bottom:1px solid #eee}
+        tr:hover td{background:#f8f9fa}
+        .hipaa-info{background:#fff3cd;border-left:4px solid #ffc107;padding:1rem;margin-top:1.5rem;border-radius:4px}
+        .hipaa-info h4{color:#856404;margin-bottom:0.5rem}
+        .masked-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem}
+        .masked-tag{padding:0.3rem 0.6rem;background:#fff3cd;border:1px solid #ffc107;border-radius:4px;font-size:0.85rem;color:#856404}
+        .analysis-box{background:#f8f9fa;border:1px solid #ddd;border-radius:4px;padding:1.5rem;margin-bottom:1.5rem}
+        .analysis-box h4{color:#3498db;margin-bottom:1rem}
+        .keyword-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+        .keyword-tag{padding:0.4rem 0.8rem;background:#e8f4f8;border-radius:4px;font-size:0.85rem;color:#2980b9}
+        .domain-badge{display:inline-block;padding:0.4rem 0.8rem;background:#3498db;color:white;border-radius:4px;font-size:0.85rem;text-transform:capitalize}
+        .toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;background:white;border:1px solid #ddd;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,0.15);transform:translateY(100px);opacity:0;transition:all 0.3s;z-index:1000}
+        .toast.show{transform:translateY(0);opacity:1}
+        .toast.success{border-left:4px solid #27ae60}
+        .toast.error{border-left:4px solid #e74c3c}
+        .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:spin 0.8s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .btn.loading .btn-text{display:none}
+        .progress-bar{width:100%;height:4px;background:#ecf0f1;border-radius:2px;overflow:hidden;margin-top:1rem;display:none}
+        .progress-bar.active{display:block}
+        .progress-fill{height:100%;background:#3498db;width:0%;animation:progress 2s ease-in-out infinite}
+        @keyframes progress{0%{width:0%}50%{width:70%}100%{width:100%}}
+        @media (max-width:768px){.container{padding:1rem}.tabs{flex-direction:column}.tab{width:100%}.hero h1{font-size:2rem}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Synthetic Data Creator</div>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <h1>Generate Synthetic Data</h1>
+            <p>Create realistic, privacy-preserving datasets for testing and development. Fully HIPAA compliant. Generate millions of records efficiently.</p>
+        </section>
+        <div class="tabs">
+            <button class="tab active" data-method="nlp">NLP</button>
+            <button class="tab" data-method="problem">Problem Statement</button>
+            <button class="tab" data-method="attributes">Define Attributes</button>
+            <button class="tab" data-method="sample">Upload Sample</button>
+        </div>
+        <div class="panel active" id="panel-nlp">
+            <h2 style="margin-bottom:1rem;color:#2c3e50">NLP Text Processing</h2>
+            <div class="info-box"><strong>Tip:</strong> Enter free-form text describing your data requirements. Our NLP engine will extract columns, record counts, ranges, and domain automatically.</div>
+            <div class="form-group">
+                <label>Text Input</label>
+                <textarea id="nlpText" placeholder="Example: I need 50000 records with patient names, ages between 25 and 75, email addresses, diagnosis codes, admission dates from 2020 to 2024, and treatment types. Include department and insurance information."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Number of Records (optional - auto-detected from text)</label>
+                <input type="number" id="nlpRecords" value="" min="10" max="10000000" placeholder="Auto-detected from text">
+            </div>
+            <div id="nlpAnalysis" class="analysis-box" style="display:none">
+                <h4>Extracted Requirements</h4>
+                <div id="nlpAnalysisContent"></div>
+            </div>
+            <div class="progress-bar" id="progressBarNLP"><div class="progress-fill"></div></div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="generateNLPBtn" onclick="generateFromNLP()">
+                    <span class="btn-text">Generate Dataset</span>
+                    <span class="spinner" style="display:none"></span>
+                </button>
+            </div>
+        </div>
+        <div class="panel" id="panel-problem">
+            <h2 style="margin-bottom:1rem;color:#2c3e50">Problem Statement</h2>
+            <div class="info-box"><strong>Tip:</strong> Describe your use case in detail. Mention the domain (healthcare, finance, retail, etc.) and what kind of analysis you want to do.</div>
+            <div class="form-group">
+                <label>Problem Statement</label>
+                <textarea id="problemStatement" placeholder="Example: I need patient data for a hospital readmission prediction model. The dataset should include patient demographics, admission details, diagnoses, and treatment information."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Number of Records</label>
+                <input type="number" id="problemRecords" value="1000" min="10" max="10000000">
+            </div>
+            <div id="analysisResults" class="analysis-box" style="display:none">
+                <h4>NLP Analysis Results</h4>
+                <div id="analysisContent"></div>
+            </div>
+            <div class="progress-bar" id="progressBar1"><div class="progress-fill"></div></div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" id="analyzeBtn" onclick="analyzeProblem()">
+                    <span class="btn-text">Analyze</span>
+                    <span class="spinner" style="display:none"></span>
+                </button>
+                <button class="btn btn-primary" id="generateProblemBtn" onclick="generateFromProblem()">
+                    <span class="btn-text">Generate Dataset</span>
+                    <span class="spinner" style="display:none"></span>
+                </button>
+            </div>
+        </div>
+        <div class="panel" id="panel-attributes">
+            <h2 style="margin-bottom:1rem;color:#2c3e50">Define Attributes</h2>
+            <div class="info-box"><strong>Tip:</strong> Enter column names and describe how you want the data generated. Our NLP processes your description to extract ranges, categories, and data types. Examples: "ages between 25 and 75", "dates from 2020-01-01 to 2024-12-31", "categories: Low, Medium, High".</div>
+            <div id="attributeList"></div>
+            <button class="add-attr-btn" onclick="addAttribute()">+ Add Column</button>
+            <div class="form-group" style="margin-top:1.5rem">
+                <label>Number of Records</label>
+                <input type="number" id="attrRecords" value="1000" min="10" max="10000000">
+            </div>
+            <div class="progress-bar" id="progressBar2"><div class="progress-fill"></div></div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="generateAttrBtn" onclick="generateFromAttributes()">
+                    <span class="btn-text">Generate Dataset</span>
+                    <span class="spinner" style="display:none"></span>
+                </button>
+            </div>
+        </div>
+        <div class="panel" id="panel-sample">
+            <h2 style="margin-bottom:1rem;color:#2c3e50">Upload Sample Dataset</h2>
+            <div class="info-box"><strong>Tip:</strong> Upload a sample CSV/Excel file with at least 5 rows. We'll analyze patterns and generate synthetic data maintaining the same statistical properties.</div>
+            <div class="file-upload" id="fileUpload">
+                <div style="font-size:3rem;margin-bottom:1rem">📄</div>
+                <p>Drag & drop your file here or click to browse</p>
+                <p style="font-size:0.85rem;color:#7f8c8d;margin-top:0.5rem">Supports: CSV, XLS, XLSX (Max 50MB)</p>
+                <input type="file" id="sampleFile" accept=".csv,.xls,.xlsx" style="display:none">
+                <div class="file-name" id="fileName" style="display:none"></div>
+            </div>
+            <div class="form-group" style="margin-top:1.5rem">
+                <label>Number of Records to Generate</label>
+                <input type="number" id="sampleRecords" value="1000" min="10" max="10000000">
+            </div>
+            <div class="form-group">
+                <label>Distribution Method</label>
+                <div class="distribution-options">
+                    <label class="dist-option selected">
+                        <input type="radio" name="distribution" value="gaussian" checked>
+                        <div style="font-weight:600">Gaussian</div>
+                        <div style="font-size:0.85rem;color:#7f8c8d">Normal distribution</div>
+                    </label>
+                    <label class="dist-option">
+                        <input type="radio" name="distribution" value="ctgan">
+                        <div style="font-weight:600">Histogram</div>
+                        <div style="font-size:0.85rem;color:#7f8c8d">Match original</div>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer">
+                    <input type="checkbox" id="allowRepeat" checked style="width:auto">
+                    Allow value repetition
+                </label>
+            </div>
+            <div class="progress-bar" id="progressBar3"><div class="progress-fill"></div></div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="generateSampleBtn" onclick="generateFromSample()">
+                    <span class="btn-text">Generate Dataset</span>
+                    <span class="spinner" style="display:none"></span>
+                </button>
+            </div>
+        </div>
+        <div class="results" id="resultsSection">
+            <div class="results-header">
+                <h2 style="color:#2c3e50">Generated Dataset</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value" id="totalRecords">0</div>
+                        <div class="stat-label">Records</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="totalColumns">0</div>
+                        <div class="stat-label">Columns</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group" style="margin-bottom:1.5rem">
+                <button class="btn btn-primary" id="downloadBtn" onclick="downloadCSV()">Download CSV</button>
+            </div>
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead id="tableHead"></thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+            <div class="hipaa-info" id="hipaaInfo" style="display:none">
+                <h4> HIPAA Protection Applied</h4>
+                <p>The following columns were identified as containing Protected Health Information (PHI) and have been replaced with synthetic fake data:</p>
+                <div class="masked-tags" id="maskedColumnsList"></div>
+            </div>
+        </div>
+    </main>
+    <div class="toast" id="toast"><span class="toast-message"></span></div>
+    <script>
+        let currentCSVData=null,currentFileId=null,attributeCount=0;
+        document.querySelectorAll('.tab').forEach(tab=>{
+            tab.addEventListener('click',()=>{
+                document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+                document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`panel-${tab.dataset.method}`).classList.add('active');
+            });
+        });
+        document.querySelectorAll('.dist-option').forEach(opt=>{
+            opt.addEventListener('click',()=>{
+                document.querySelectorAll('.dist-option').forEach(o=>o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+        });
+        const fileUpload=document.getElementById('fileUpload'),fileInput=document.getElementById('sampleFile'),fileNameDiv=document.getElementById('fileName');
+        fileUpload.addEventListener('click',()=>fileInput.click());
+        fileUpload.addEventListener('dragover',e=>{e.preventDefault();fileUpload.style.borderColor='#3498db'});
+        fileUpload.addEventListener('dragleave',()=>fileUpload.style.borderColor='#bdc3c7');
+        fileUpload.addEventListener('drop',e=>{e.preventDefault();fileUpload.style.borderColor='#bdc3c7';if(e.dataTransfer.files.length){fileInput.files=e.dataTransfer.files;showFileName(e.dataTransfer.files[0].name)}});
+        fileInput.addEventListener('change',()=>{if(fileInput.files.length)showFileName(fileInput.files[0].name)});
+        function showFileName(name){fileNameDiv.textContent='📎 '+name;fileNameDiv.style.display='block'}
+        async function detectColumnType(columnName,attrId){
+            try{
+                const response=await fetch('/detect_column_type',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({column_name:columnName})});
+                const data=await response.json();
+                const typeSpan=document.getElementById(`detected-type-${attrId}`);
+                if(typeSpan&&data.detected_type)typeSpan.textContent=`(${data.detected_type}${data.is_hipaa_sensitive?' 🔒HIPAA':''})`;
+            }catch(e){console.log('Type detection error:',e)}
+        }
+        function addAttribute(){
+            attributeCount++;
+            const attrId=attributeCount;
+            const attrHtml=`<div class="attribute-item" id="attr-${attrId}"><div class="attribute-header"><span class="attribute-name">Column ${attrId} <span class="detected-type" id="detected-type-${attrId}"></span></span><button class="remove-btn" onclick="removeAttribute(${attrId})">Remove</button></div><div class="attr-fields"><div class="form-group" style="margin-bottom:0"><label>Column Name</label><input type="text" class="attr-name" placeholder="e.g., first_name, age, email" onchange="detectColumnType(this.value,${attrId})" onkeyup="detectColumnType(this.value,${attrId})"></div><div class="form-group" style="margin-bottom:0"><label>Data Type (optional)</label><select class="attr-dtype"><option value="">Auto-detect</option><option value="numeric">Numeric</option><option value="categorical">Categorical</option><option value="date">Date</option><option value="string">String</option><option value="boolean">Boolean</option><option value="email">Email</option><option value="phone">Phone</option></select></div><div class="form-group" style="margin-bottom:0;grid-column:span 2"><label>Description (e.g., "ages between 25 and 75", "dates from 2020-01-01 to 2024-12-31", "categories: Low, Medium, High")</label><textarea class="attr-description" placeholder="Describe how you want this column data to be generated. Examples: 'ages between 18 and 65', 'prices from 10.50 to 999.99', 'dates from 2020 to 2024', 'categories: Active, Inactive, Pending'" style="min-height:80px"></textarea></div></div></div>`;
+            document.getElementById('attributeList').insertAdjacentHTML('beforeend',attrHtml);
+        }
+        function removeAttribute(id){document.getElementById(`attr-${id}`).remove()}
+        addAttribute();addAttribute();
+        function showToast(message,type='success'){
+            const toast=document.getElementById('toast');
+            toast.querySelector('.toast-message').textContent=message;
+            toast.className=`toast ${type} show`;
+            setTimeout(()=>toast.classList.remove('show'),4000);
+        }
+        function setButtonLoading(btnId,loading){
+            const btn=document.getElementById(btnId);
+            if(loading){btn.classList.add('loading');btn.disabled=true;btn.querySelector('.spinner').style.display='inline-block'}
+            else{btn.classList.remove('loading');btn.disabled=false;btn.querySelector('.spinner').style.display='none'}
+        }
+        function showProgress(id,show){
+            const bar=document.getElementById(id);
+            if(show)bar.classList.add('active');
+            else bar.classList.remove('active');
+        }
+        async function generateFromNLP(){
+            const text=document.getElementById('nlpText').value;
+            if(!text.trim()){showToast('Please enter text input','error');return}
+            const numRecords=parseInt(document.getElementById('nlpRecords').value)||0;
+            setButtonLoading('generateNLPBtn',true);
+            showProgress('progressBarNLP',true);
+            showToast('Processing NLP and generating data...');
+            try{
+                const response=await fetch('/process_nlp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text,num_records:numRecords})});
+                const data=await response.json();
+                if(data.error){showToast(data.error,'error');return}
+                if(data.large_file){currentFileId=data.file_id;currentCSVData=null}
+                else{currentCSVData=data.csv_data;currentFileId=null}
+                const analysisDiv=document.getElementById('nlpAnalysis');
+                const contentDiv=document.getElementById('nlpAnalysisContent');
+                contentDiv.innerHTML=`<p style="margin-bottom:1rem"><strong>Detected Domain:</strong> <span class="domain-badge">${data.domain}</span></p><p style="margin-bottom:0.5rem"><strong>Columns Generated:</strong></p><div class="keyword-tags" style="margin-bottom:1rem">${data.columns.map(c=>`<span class="keyword-tag">${c}</span>`).join('')}</div>`;
+                analysisDiv.style.display='block';
+                displayResults(data);
+                showToast(`Successfully generated ${data.total_records.toLocaleString()} records!`);
+            }catch(error){showToast('Error generating dataset: '+error.message,'error')}
+            finally{setButtonLoading('generateNLPBtn',false);showProgress('progressBarNLP',false)}
+        }
+        async function analyzeProblem(){
+            const statement=document.getElementById('problemStatement').value;
+            if(!statement.trim()){showToast('Please enter a problem statement','error');return}
+            setButtonLoading('analyzeBtn',true);
+            try{
+                const response=await fetch('/analyze_problem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({problem_statement:statement})});
+                const data=await response.json();
+                if(data.error){showToast(data.error,'error');return}
+                const resultsDiv=document.getElementById('analysisResults');
+                const contentDiv=document.getElementById('analysisContent');
+                contentDiv.innerHTML=`<p style="margin-bottom:1rem"><strong>Detected Domain:</strong> <span class="domain-badge">${data.domain}</span></p><p style="margin-bottom:0.5rem"><strong>Columns to Generate:</strong></p><div class="keyword-tags" style="margin-bottom:1rem">${data.columns.map(c=>`<span class="keyword-tag">${c}</span>`).join('')}</div><p style="margin-bottom:0.5rem"><strong>Keywords:</strong></p><div class="keyword-tags">${data.keywords.map(k=>`<span class="keyword-tag">${k}</span>`).join('')}</div>`;
+                resultsDiv.style.display='block';
+                showToast('Analysis complete!');
+            }catch(error){showToast('Error analyzing problem statement','error')}
+            finally{setButtonLoading('analyzeBtn',false)}
+        }
+        async function generateFromProblem(){
+            const statement=document.getElementById('problemStatement').value;
+            const numRecords=parseInt(document.getElementById('problemRecords').value);
+            if(!statement.trim()){showToast('Please enter a problem statement','error');return}
+            setButtonLoading('generateProblemBtn',true);
+            showProgress('progressBar1',true);
+            showToast(`Generating ${numRecords.toLocaleString()} records...`);
+            try{
+                const response=await fetch('/generate_from_problem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({problem_statement:statement,num_records:numRecords})});
+                const data=await response.json();
+                if(data.error){showToast(data.error,'error');return}
+                if(data.large_file){currentFileId=data.file_id;currentCSVData=null}
+                else{currentCSVData=data.csv_data;currentFileId=null}
+                displayResults(data);
+                showToast(`Successfully generated ${data.total_records.toLocaleString()} records!`);
+            }catch(error){showToast('Error generating dataset: '+error.message,'error')}
+            finally{setButtonLoading('generateProblemBtn',false);showProgress('progressBar1',false)}
+        }
+        async function generateFromAttributes(){
+            const attributes=[];
+            document.querySelectorAll('.attribute-item').forEach(item=>{
+                const name=item.querySelector('.attr-name').value;
+                if(name)attributes.push({name:name,dtype:item.querySelector('.attr-dtype').value,description:item.querySelector('.attr-description')?.value||''});
+            });
+            if(attributes.length===0){showToast('Please add at least one column with a name','error');return}
+            const numRecords=parseInt(document.getElementById('attrRecords').value);
+            setButtonLoading('generateAttrBtn',true);
+            showProgress('progressBar2',true);
+            showToast(`Generating ${numRecords.toLocaleString()} records...`);
+            try{
+                const response=await fetch('/generate_from_attributes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({attributes:attributes,num_records:numRecords})});
+                const data=await response.json();
+                if(data.error){showToast(data.error,'error');return}
+                if(data.large_file){currentFileId=data.file_id;currentCSVData=null}
+                else{currentCSVData=data.csv_data;currentFileId=null}
+                displayResults(data);
+                showToast(`Successfully generated ${data.total_records.toLocaleString()} records!`);
+            }catch(error){showToast('Error generating dataset: '+error.message,'error')}
+            finally{setButtonLoading('generateAttrBtn',false);showProgress('progressBar2',false)}
+        }
+        async function generateFromSample(){
+            const file=document.getElementById('sampleFile').files[0];
+            if(!file){showToast('Please upload a sample file first','error');return}
+            const numRecords=parseInt(document.getElementById('sampleRecords').value);
+            const formData=new FormData();
+            formData.append('file',file);
+            formData.append('num_records',numRecords);
+            formData.append('distribution',document.querySelector('input[name="distribution"]:checked').value);
+            formData.append('allow_repeat',document.getElementById('allowRepeat').checked);
+            setButtonLoading('generateSampleBtn',true);
+            showProgress('progressBar3',true);
+            showToast(`Analyzing sample and generating ${numRecords.toLocaleString()} records...`);
+            try{
+                const response=await fetch('/generate_from_sample',{method:'POST',body:formData});
+                const data=await response.json();
+                if(data.error){showToast(data.error,'error');return}
+                if(data.large_file){currentFileId=data.file_id;currentCSVData=null}
+                else{currentCSVData=data.csv_data;currentFileId=null}
+                displayResults(data);
+                showToast(`Successfully generated ${data.total_records.toLocaleString()} records!`);
+            }catch(error){showToast('Error generating dataset: '+error.message,'error')}
+            finally{setButtonLoading('generateSampleBtn',false);showProgress('progressBar3',false)}
+        }
+        function displayResults(data){
+            document.getElementById('totalRecords').textContent=data.total_records.toLocaleString();
+            document.getElementById('totalColumns').textContent=data.columns.length;
+            const thead=document.getElementById('tableHead');
+            thead.innerHTML='<tr>'+data.columns.map(col=>`<th>${col}${data.masked_columns&&data.masked_columns.includes(col)?' 🔒':''}</th>`).join('')+'</tr>';
+            const tbody=document.getElementById('tableBody');
+            tbody.innerHTML=data.preview.map(row=>'<tr>'+data.columns.map(col=>`<td>${row[col]!==null&&row[col]!==undefined?row[col]:''}</td>`).join('')+'</tr>').join('');
+            const hipaaInfo=document.getElementById('hipaaInfo');
+            if(data.masked_columns&&data.masked_columns.length>0){
+                hipaaInfo.style.display='block';
+                document.getElementById('maskedColumnsList').innerHTML=data.masked_columns.map(col=>`<span class="masked-tag">${col}</span>`).join('');
+            }else{hipaaInfo.style.display='none'}
+            document.getElementById('resultsSection').classList.add('visible');
+            document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});
+        }
+        function downloadCSV(){
+            if(currentFileId){window.location.href=`/download/${currentFileId}`;showToast('Download started!')}
+            else if(currentCSVData){
+                const blob=new Blob([currentCSVData],{type:'text/csv;charset=utf-8;'});
+                const url=window.URL.createObjectURL(blob);
+                const a=document.createElement('a');
+                a.href=url;
+                a.download='synthetic_data_'+new Date().toISOString().slice(0,10)+'.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                showToast('Download started!');
+            }else{showToast('No data to download','error')}
+        }
+    </script>
+</body>
+</html>
