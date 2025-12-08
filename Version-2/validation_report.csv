@@ -1,10 +1,10 @@
 Check,Status
-Unique dim_patient.patient_sk,PASS
+Unique dim_patient.member_sk,PASS
 Unique dim_provider.provider_sk,PASS
 Unique dim_procedure.proc_sk,PASS
 Unique fact_claim.claim_sk,PASS
 Nulls in fact_claim.claim_sk,PASS
-Nulls in fact_claim.patient_sk,PASS
+Nulls in fact_claim.member_sk,PASS
 Nulls in fact_claim.provider_sk,PASS
 Nulls in fact_claim.proc_sk,PASS
 Nulls in fact_claim.date_of_service,PASS
